@@ -20,7 +20,14 @@ public class AppDbContext : DbContext, IUnitOfWork
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<OrderItem>()
+            .OwnsOne(o => o.UnitPrice, m =>
+            {
+                m.Property(p => p.Amount).HasColumnName("UnitPriceAmount");
+                m.Property(p => p.Currency).HasColumnName("UnitPriceCurrency");
+            });
     }
 
     public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
