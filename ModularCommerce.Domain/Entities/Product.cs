@@ -8,7 +8,7 @@ public class Product : Entity
 {
     public string Name { get; private set; } = default!;
     public string Description { get; private set; } = default!;
-    public Money Price { get; private set; }
+    public Money Price { get; private set; } = new Money(0, "EUR");
     public int Stock { get; private set; }
 
     private Product() { }

@@ -1,14 +1,27 @@
 using ModularCommerce.Infrastructure.BackgroundServices;
+using ModularCommerce.Infrastructure.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+if (string.IsNullOrEmpty(connectionString))
+{
+    throw new InvalidOperationException("Connection string 'DefaultConnection' no está configurada.");
+}
+
+builder.Services.AddInfrastructure(connectionString);
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
 builder.Services.AddOpenApi();
 
 builder.Services.AddHostedService<OutboxWorker>();
+
+builder.Services.AddApplication();
+
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -25,3 +38,8 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+app.UseSwagger();
+
+app.UseSwaggerUI();
+
