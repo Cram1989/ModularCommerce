@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="ModularCommerce.API/ModularCommerce.API.csproj" />
+  <Project Path="ModularCommerce.Application/ModularCommerce.Application.csproj" />
+  <Project Path="ModularCommerce.Domain/ModularCommerce.Domain.csproj" />
+  <Project Path="ModularCommerce.Infrastructure/ModularCommerce.Infrastructure.csproj" />
+  <Project Path="ModularCommerce.Shared/ModularCommerce.Shared.csproj" />
+  <Project Path="ModularCommerce.Tests/ModularCommerce.Tests.csproj" />
+</Solution>
