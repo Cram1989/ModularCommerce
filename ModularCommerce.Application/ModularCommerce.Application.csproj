@@ -14,7 +14,6 @@
   <ItemGroup>
     <Folder Include="Features\Orders\Commands\" />
     <Folder Include="Features\Orders\Queries\" />
-    <Folder Include="Interfaces\" />
     <Folder Include="Behaviors\" />
   </ItemGroup>
 

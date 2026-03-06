@@ -1,5 +1,6 @@
 ﻿using ModularCommerce.Domain.Common;
 using ModularCommerce.Domain.ValueObjects;
+using ModularCommerce.Domain.Events;
 
 namespace ModularCommerce.Domain.Entities;
 
@@ -19,6 +20,8 @@ public class Product : Entity
         Description = description;
         Price = price;
         Stock = stock;
+
+        AddDomainEvent(new ProductCreatedEvent(this));
     }
 
     public void ReduceStock(int quantity)
